@@ -29,9 +29,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Aciona e regista via CDN folhas de estilo e diretrizes do Spectre CSS
 
 function meuppt_spectre_init() {
-    wp_enqueue_style( 'bootstrap', '//unpkg.com/spectre.css/dist/spectre.min.css' );
-    wp_enqueue_style( 'bootstrap', '//unpkg.com/spectre.css/dist/spectre-exp.min.css' );
-    wp_enqueue_style( 'bootstrap', '//unpkg.com/spectre.css/dist/spectre-icons.min.css' );
+    wp_register_style('spectre', '//unpkg.com/spectre.css/dist/spectre.min.css', array(), null, 'all');
+	wp_enqueue_style('spectre');
+    wp_register_style('spectre-exp', '//unpkg.com/spectre.css/dist/spectre-exp.min.css', array(), null, 'all');
+	wp_enqueue_style('spectre-exp');
+    wp_register_style('spectre-icons', '//unpkg.com/spectre.css/dist/spectre-icons.min.css', array(), null, 'all');
+	wp_enqueue_style('spectre-icons');
 }
 
 add_action('wp_enqueue_scripts', 'meuppt_spectre_init');
