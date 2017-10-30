@@ -26,14 +26,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 **************************************************************************/
 
-// Aciona via CDN folhas de estilo e diretrizes do Spectre CSS
+// Aciona e regista via CDN folhas de estilo e diretrizes do Spectre CSS
 
 function meuppt_spectre_init() {
-    ?>
-        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
-    <?php
+    wp_enqueue_style( 'bootstrap', '//unpkg.com/spectre.css/dist/spectre.min.css' );
+    wp_enqueue_style( 'bootstrap', '//unpkg.com/spectre.css/dist/spectre-exp.min.css' );
+    wp_enqueue_style( 'bootstrap', '//unpkg.com/spectre.css/dist/spectre-icons.min.css' );
 }
 
-add_action('wp_head', 'meuppt_spectre_init');
+add_action('wp_enqueue_scripts', 'meuppt_spectre_init');
