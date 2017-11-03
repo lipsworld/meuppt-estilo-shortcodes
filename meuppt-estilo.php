@@ -1,5 +1,6 @@
-<?php /*
-**************************************************************************
+<?php
+
+/*
 Plugin Name:  MeuPPT - Shortcodes, estilos e elementos
 Plugin URI:   https://github.com/lipsworld/meuppt-estilo-shortcodes
 Description:  Habilita uma série de estilos e shortcodes para uso em posts e páginas, mas também classes CSS para edição e modificação de templates.
@@ -9,6 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Author:       MeuPPT
 Author URI:   http://www.meuppt.pt/
 Text Domain:  security-functions-meuppt
+
 **************************************************************************
 Copyright (C) 2017 MeuPPT
 This program is free software: you can redistribute it and/or modify
@@ -26,15 +28,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 **************************************************************************/
 
-// Aciona e regista via CDN folhas de estilo e diretrizes do Spectre CSS
+// Aciona e regista folhas de estilo para o admin
 
-function meuppt_spectre_init() {
-    wp_register_style('custom_wp_admin_css', '//unpkg.com/spectre.css/dist/spectre.min.css', array(), null, 'all');
-	wp_enqueue_style('spectre');
-    wp_register_style('custom_wp_admin_css', '//unpkg.com/spectre.css/dist/spectre-exp.min.css', array(), null, 'all');
-	wp_enqueue_style('spectre-exp');
-    wp_register_style('custom_wp_admin_css', '//unpkg.com/spectre.css/dist/spectre-icons.min.css', array(), null, 'all');
-	wp_enqueue_style('spectre-icons');
+function meuppt_custom_wp_admin_style() {
+        wp_enqueue_style( 'custom_wp_admin_css', plugins_url('admin-style.css', __FILE__) );
 }
+add_action( 'admin_enqueue_scripts', 'meuppt_custom_wp_admin_style' );
 
-add_action('admin_enqueue_scripts', 'meuppt_spectre_init');
